@@ -6,15 +6,29 @@ import tailwindcss from 'tailwindcss'
 export default defineConfig({
   main: {
     plugins: [externalizeDepsPlugin()],
-    publicDir: path.resolve('public')
+    publicDir: path.resolve('public'),
+    build: {
+      outDir: 'out/main',
+      rollupOptions: {
+        input: {
+          index: path.resolve(__dirname, 'src/main/index.ts')
+        }
+      }
+    }
   },
   preload: {
-    plugins: [externalizeDepsPlugin()]
+    plugins: [externalizeDepsPlugin()],
+    build: {
+      outDir: 'out/preload'
+    }
   },
   renderer: {
     publicDir: path.resolve('public'),
     define: {
       'process.platform': JSON.stringify(process.platform)
+    },
+    build: {
+      outDir: 'out/renderer'
     },
     css: {
       postcss: {
