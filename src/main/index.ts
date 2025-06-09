@@ -7,8 +7,8 @@ function createWindow(): void {
   const iconPath = join(process.cwd(), 'public', 'icon.png')
 
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    width: 1120,
+    height: 700,
     show: false,
     autoHideMenuBar: true,
     titleBarStyle: "hiddenInset",
