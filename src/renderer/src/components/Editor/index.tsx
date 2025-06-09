@@ -6,6 +6,7 @@ import Document from "@tiptap/extension-document";
 
 import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+
 export function Editor() {
   const editor = useEditor({
     extensions: [

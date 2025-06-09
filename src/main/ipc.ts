@@ -1,6 +1,8 @@
 import { ipcMain } from "electron";
+import { IPC } from "../shared/constants/ipc";
+import type { FetchAllDocumentsResponse } from "../types/ipc";
 
-ipcMain.handle('fetch-documents', async () => {
+ipcMain.handle(IPC.DOCUMENTS.FETCH_ALL, async (): Promise<FetchAllDocumentsResponse> => {
   return [
     {
       id: '1',

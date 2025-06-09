@@ -6,6 +6,7 @@ import { Profile } from './Profile'
 import { Search } from './Search'
 import * as Collapsible  from "@radix-ui/react-collapsible";
 import { useQuery } from '@tanstack/react-query'
+import type { Document } from '../../../../types/ipc'
 
 export function Sidebar() {
   const isMacOS = process.platform === 'darwin'
@@ -13,7 +14,7 @@ export function Sidebar() {
     queryKey: ['documents'],
     queryFn: async () => {
       const response = await window.api.fetchDocuments()
-      return response
+      return response.data
     }
   })
 
@@ -53,9 +54,9 @@ export function Sidebar() {
           <Navigation.Section>
             <Navigation.SectionTitle>Workspace</Navigation.SectionTitle>
             <Navigation.SectionContent>
-              {data?.map(document => {
-                return <Navigation.Link key={document.id}>{document.title}</Navigation.Link>
-              })}
+              {data?.map((document: Document) => (
+                <Navigation.Link key={document.id}>{document.title}</Navigation.Link>
+              ))}
             </Navigation.SectionContent>
           </Navigation.Section>
         </Navigation.Root>
