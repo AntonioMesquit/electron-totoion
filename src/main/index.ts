@@ -2,6 +2,7 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import path, { join } from 'node:path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { registerRoute } from '../lib/electron-router-dom'
+import './ipc'
 
 function createWindow(): void {
   const iconPath = join(process.cwd(), 'public', 'icon.png')
