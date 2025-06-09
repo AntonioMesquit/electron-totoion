@@ -13,8 +13,13 @@ export function Sidebar() {
   const { data } = useQuery({
     queryKey: ['documents'],
     queryFn: async () => {
-      const response = await window.api.fetchDocuments()
-      return response.data
+      try {
+        const response = await window.api.fetchDocuments()
+        return response.data || []
+      } catch (error) {
+        console.error('Erro ao buscar documentos:', error)
+        return []
+      }
     }
   })
 
