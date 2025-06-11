@@ -6,8 +6,11 @@ import Document from "@tiptap/extension-document";
 
 import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+interface EditorProps {
+content: string
+}
 
-export function Editor() {
+export function Editor({ content }: EditorProps) {
   const editor = useEditor({
     extensions: [
       Document.extend({
@@ -23,7 +26,7 @@ export function Editor() {
         emptyEditorClass: 'before:content-[attr(data-placeholder)] before:text-gray-500 before:h-0 before:float-left before:pointer-events-none',
       }),
     ],
-    content: '<h1>Back-end</h1><p>Esse é o documento que explica sobre o back-end</p>',
+    content,
     autofocus: 'end',
     editorProps: {
       attributes: {

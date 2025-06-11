@@ -1,12 +1,12 @@
-import * as Navigation from './Navigation'
+import * as Collapsible from "@radix-ui/react-collapsible"
+import { useQuery } from '@tanstack/react-query'
 import clsx from 'clsx'
 import { CaretDoubleLeft } from 'phosphor-react'
+import type { Document } from '../../../../types/ipc'
 import { CreatePage } from './CreatePage'
+import * as Navigation from './Navigation'
 import { Profile } from './Profile'
 import { Search } from './Search'
-import * as Collapsible  from "@radix-ui/react-collapsible";
-import { useQuery } from '@tanstack/react-query'
-import type { Document } from '../../../../types/ipc'
 
 export function Sidebar() {
   const isMacOS = process.platform === 'darwin'
@@ -60,7 +60,7 @@ export function Sidebar() {
             <Navigation.SectionTitle>Workspace</Navigation.SectionTitle>
             <Navigation.SectionContent>
               {data?.map((document: Document) => (
-                <Navigation.Link key={document.id}>{document.title}</Navigation.Link>
+                <Navigation.Link to={`/document/${document.id}`} key={document.id}>{document.title}</Navigation.Link>
               ))}
             </Navigation.SectionContent>
           </Navigation.Section>
